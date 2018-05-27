@@ -1,0 +1,52 @@
+#body {
+    background-color: #111214;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    color: aliceblue;
+    font-family: Calibri;
+}
+
+#content {
+    order: 2;
+    width: 100%;
+    display: flex;
+    background-color: #212428;
+    flex-direction: column;
+}
+
+.sideBarFlexContainer {
+    background-color: #242424;
+    order: 1;
+    width: 15%;
+
+}
+
+.mainFlexUpper {
+    display: flex;
+    order: 2;
+    height: 50%;
+    width: 100%;
+    justify-content: space-around;
+    border-bottom-style: solid;
+}
+
+.mainFlexLower {
+    display: flex;
+    order: 3;
+    height: 50%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+#greyHighligjht {
+    background-color: #212428;
+}
+
+#blueHighlight {
+    background-color: #323439;
+}
