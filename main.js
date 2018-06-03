@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow} = require('electron');
 'use strict';
 const ioHook = require('iohook');
 
@@ -32,16 +32,14 @@ app.on('activate', function () {
     }
 });
 
-console.log("lu");
-
-
 ioHook.on('mousemove', event => {
     console.log(event);
 });
 
+ioHook.on('keyup', event => {
+    console.log(event);
+});
 
-// Register and start hook
+
 ioHook.start();
-
-// Alternatively, pass true to start in DEBUG mode.
 ioHook.start(true);
