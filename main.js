@@ -1,6 +1,7 @@
 const {app, BrowserWindow} = require('electron');
 'use strict';
 const ioHook = require('iohook');
+app.commandLine.appendSwitch('remote-debugging-port', '9222');
 
 let mainWindow;
 
