@@ -1,22 +1,36 @@
 const {app, BrowserWindow} = require('electron');
+const d3 = require('d3');
 'use strict';
 const ioHook = require('iohook');
-app.commandLine.appendSwitch('remote-debugging-port', '9222');
 
 let mainWindow;
+global.mouseMovements;
+global.keyPressDict = {};
+global.keyCodeToAlphabet = {};
 
-console.log(process.versions.electron);
 
 function createWindow() {
 
     mainWindow = new BrowserWindow({width: 800, height: 600})
-
+    setKeys();
 
     mainWindow.loadFile('index.html')
     mainWindow.on('closed', function () {
         mainWindow = null
     })
 }
+
+function setKeys() {
+    var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var keyCodeStart = 65;
+
+    for(var loopCount = 0; loopCount<alphabet.length; loopCount++)
+    {
+        keyCodeToAlphabet[keyCodeStart] = alphabet.charAt(loopCount);
+        keyCodeStart++;
+    }
+}
+app.commandLine.appendSwitch('remote-debugging-port', '9222');
 
 
 app.on('ready', createWindow)
@@ -34,13 +48,28 @@ app.on('activate', function () {
 });
 
 ioHook.on('mousemove', event => {
-    console.log(event);
+ //   console.log(event);
 });
 
 ioHook.on('keyup', event => {
-    console.log(event);
+    transformKeyEvent(event);
 });
 
 
 ioHook.start();
-ioHook.start(true);
+
+function rawToAlpha(rawCode) {
+    s
+}
+
+function transformKeyEvent(event) {
+    var key = keyCodeToAlphabet[event.rawcode];
+    if(key  in keyPressDict){
+        keyPressDict[key] =  keyPressDict[key] +=1;
+    }
+    else {
+        keyPressDict[key] = 1;
+    }
+
+    console.log(key + keyPressDict[key]);
+}

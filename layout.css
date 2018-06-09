@@ -50,3 +50,29 @@
 #blueHighlight {
     background-color: #323439;
 }
+
+.chart div {
+    font: 10px sans-serif;
+    background-color: steelblue;
+    text-align: right;
+    padding: 3px;
+    margin: 1px;
+    color: white;
+}
+
+.pie {
+    margin: 20px;
+}
+
+.pie text {
+    font-family: "Verdana";
+    fill: #888;
+}
+
+.pie .name-text {
+    font-size: 1em;
+}
+
+.pie .value-text {
+    font-size: 3em;
+}
