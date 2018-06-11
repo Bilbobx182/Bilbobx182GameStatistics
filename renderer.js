@@ -1,13 +1,17 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
-var last = document.getElementById('last');
-const d3 = require ('d3');
-last.style.backgroundColor = "red";
+const d3 = require('d3');
 
+var keyPressData = [
+    {key: "Nothing yet!", value: 10}
+];
+pieChart(keyPressData);
 barChart();
-pieChart();
+
+
 //
+
 function barChart() {
     var data = [30, 86, 168, 281, 303, 365];
     d3.select(".chart")
@@ -15,17 +19,15 @@ function barChart() {
         .data(data)
         .enter()
         .append("div")
-        .style("width", function(d) { return d + "px"; })
-        .text(function(d) { return d; });
+        .style("width", function (d) {
+            return d + "px";
+        })
+        .text(function (d) {
+            return d;
+        });
 }
 
-function pieChart() {
-    var data = [
-        {name: "W", value: 40},
-        {name: "S", value: 20},
-        {name: "A", value: 30},
-        {name: "D", value: 10},
-    ];
+function pieChart(keyPressData) {
     var text = "";
 
     var width = 260;
@@ -43,21 +45,23 @@ function pieChart() {
         .attr('height', height);
 
     var g = svg.append('g')
-        .attr('transform', 'translate(' + (width/2) + ',' + (height/2) + ')');
+        .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
 
     var arc = d3.arc()
         .innerRadius(radius - thickness)
         .outerRadius(radius);
 
     var pie = d3.pie()
-        .value(function(d) { return d.value; })
+        .value(function (d) {
+            return d.value;
+        })
         .sort(null);
 
     var path = g.selectAll('path')
-        .data(pie(data))
+        .data(pie(keyPressData))
         .enter()
         .append("g")
-        .on("mouseover", function(d) {
+        .on("mouseover", function (d) {
             let g = d3.select(this)
                 .style("cursor", "pointer")
                 .style("fill", "black")
@@ -66,7 +70,7 @@ function pieChart() {
 
             g.append("text")
                 .attr("class", "name-text")
-                .text(`${d.data.name}`)
+                .text(`${d.data.key}`)
                 .attr('text-anchor', 'middle')
                 .attr('dy', '-1.2em');
 
@@ -76,7 +80,7 @@ function pieChart() {
                 .attr('text-anchor', 'middle')
                 .attr('dy', '.6em');
         })
-        .on("mouseout", function(d) {
+        .on("mouseout", function (d) {
             d3.select(this)
                 .style("cursor", "none")
                 .style("fill", color(this._current))
@@ -84,18 +88,20 @@ function pieChart() {
         })
         .append('path')
         .attr('d', arc)
-        .attr('fill', (d,i) => color(i))
-        .on("mouseover", function(d) {
+        .attr('fill', (d, i) => color(i))
+        .on("mouseover", function (d) {
             d3.select(this)
                 .style("cursor", "pointer")
-                .style("fill", "black");
+                .style("fill", "white");
         })
-        .on("mouseout", function(d) {
+        .on("mouseout", function (d) {
             d3.select(this)
                 .style("cursor", "none")
                 .style("fill", color(this._current));
         })
-        .each(function(d, i) { this._current = i; });
+        .each(function (d, i) {
+            this._current = i;
+        });
 
 
     g.append('text')
@@ -103,3 +109,7 @@ function pieChart() {
         .attr('dy', '.35em')
         .text(text);
 }
+
+require('electron').ipcRenderer.on('ping', (event, message) => {
+    pieChart(message);
+});

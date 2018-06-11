@@ -1,35 +1,36 @@
 const {app, BrowserWindow} = require('electron');
+const ipc = require('electron').ipcMain;
 const d3 = require('d3');
 'use strict';
 const ioHook = require('iohook');
 
-let mainWindow;
+global.mainWindow = null;
 global.mouseMovements;
-global.keyPressDict = {};
+global.keyPressDict = [];
+global.keysActive = [];
 global.keyCodeToAlphabet = {};
 
 
 function createWindow() {
-
     mainWindow = new BrowserWindow({width: 800, height: 600})
     setKeys();
 
     mainWindow.loadFile('index.html')
     mainWindow.on('closed', function () {
         mainWindow = null
-    })
+    });
 }
 
 function setKeys() {
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var keyCodeStart = 65;
 
-    for(var loopCount = 0; loopCount<alphabet.length; loopCount++)
-    {
+    for (var loopCount = 0; loopCount < alphabet.length; loopCount++) {
         keyCodeToAlphabet[keyCodeStart] = alphabet.charAt(loopCount);
         keyCodeStart++;
     }
 }
+
 app.commandLine.appendSwitch('remote-debugging-port', '9222');
 
 
@@ -48,7 +49,7 @@ app.on('activate', function () {
 });
 
 ioHook.on('mousemove', event => {
- //   console.log(event);
+    //   console.log(event);
 });
 
 ioHook.on('keyup', event => {
@@ -58,18 +59,38 @@ ioHook.on('keyup', event => {
 
 ioHook.start();
 
-function rawToAlpha(rawCode) {
-    s
-}
-
 function transformKeyEvent(event) {
-    var key = keyCodeToAlphabet[event.rawcode];
-    if(key  in keyPressDict){
-        keyPressDict[key] =  keyPressDict[key] +=1;
-    }
-    else {
-        keyPressDict[key] = 1;
-    }
+    var currentKey = keyCodeToAlphabet[event.rawcode];
 
-    console.log(key + keyPressDict[key]);
+
+    // if(!keysActive.includes(key)) {
+    //     keysActive.push(key);
+    // }
+
+
+    // If there's nothing there just plonk it in.
+    if (keyPressDict.length < 1) {
+        keyPressDict.push({
+            key: currentKey,
+            value: keyPressDict[currentKey] = 1
+        });
+    } else {
+        // Check if the currey keyPress is already in the dict
+        if (keyPressDict.some(e => e.key == currentKey)) {
+
+            // Itterate through the array checking to see if the current item is the the array item
+            for (var keyItem in keyPressDict) {
+                if (keyPressDict[keyItem].key == currentKey) {
+                    keyPressDict[keyItem].value += 1;
+                }
+            }
+        } else {
+            // Otherwise insert it in
+            keyPressDict.push({
+                key: currentKey,
+                value: keyPressDict[currentKey] = 1
+            });
+        }
+    }
+    mainWindow.webContents.send('ping', keyPressDict);
 }
