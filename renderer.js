@@ -17,6 +17,7 @@ function barChart(keyPressdata) {
     var clearBar = document.getElementById('barChart');
     clearBar.innerHTML = "";
 
+    var color = d3.scaleOrdinal(d3.schemeCategory10);
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
@@ -37,8 +38,6 @@ function barChart(keyPressdata) {
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
-
-// get the data
 
 
     // Scale the range of the data in the domains
@@ -63,15 +62,31 @@ function barChart(keyPressdata) {
         })
         .attr("height", function (d) {
             return height - y(d.value);
+        })
+        .attr('fill', (d, i) => color(i))
+        .on("mouseover", function (d) {
+            d3.select(this)
+                .style("cursor", "pointer")
+                .style("fill", "white");
+        })
+        .on("mouseout", function (d) {
+            d3.select(this)
+                .style("cursor", "none")
+                .style("fill", color(this._current));
+        })
+        .each(function (d, i) {
+            this._current = i;
         });
 
     // add the x Axis
     svg.append("g")
         .attr("transform", "translate(0," + height + ")")
+        .attr("class", "axisColour")
         .call(d3.axisBottom(x));
 
     // add the y Axis
     svg.append("g")
+        .attr("class", "axisColour")
         .call(d3.axisLeft(y));
 
 }

@@ -11,6 +11,18 @@
     font-family: Calibri;
 }
 
+.axisColour line{
+    stroke: aliceblue;
+}
+
+.axisColour path{
+    stroke: aliceblue;
+}
+
+.axisColour text{
+    fill: aliceblue;
+}
+
 #content {
     order: 2;
     width: 100%;
@@ -51,13 +63,13 @@
     background-color: #323439;
 }
 
-.chart div {
+.barChart {
     font: 10px sans-serif;
     background-color: steelblue;
     text-align: right;
     padding: 3px;
     margin: 1px;
-    color: white;
+    color: aliceblue;
 }
 
 .pie {
