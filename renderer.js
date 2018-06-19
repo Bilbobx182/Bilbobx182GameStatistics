@@ -8,7 +8,7 @@ var keyPressData = [
 ];
 
 var GridValues = [
-    {Xmin:0,xMax:26}
+    {xMin: 0, xMax: 26, yMin: 0}
 ];
 
 pieChart(keyPressData);
@@ -188,6 +188,13 @@ function pieChart(keyPressData) {
 }
 
 function heatMap() {
+    // COMPUTATIONALLY EXPENSIVE MAKE NICE PLZ
+
+    var screenDimensions = {width: screen.width, height: screen.height};
+
+
+    var widthCiaran = screenDimensions.width - (.50 * screenDimensions.width);
+
     function gridData() {
         var data = new Array();
         var xpos = 1;
@@ -196,12 +203,22 @@ function heatMap() {
         var height = 23;
         var click = 0;
 
+
+        /*
+        Figure out how to do it right you're not happy with the height variable
+        22 boxes DOWN 40 across
+
+        Maybe do it another time and actually get the thing done anyway.
+
+         */
         // iterate for rows
-        for (var row = 0; row < screen.height/50; row++) {
-            data.push( new Array() );
+
+        //ROW = Y
+        for (var row = 0; row < screenDimensions.height * .45; row++) {
+            data.push(new Array());
 
             // iterate for cells/columns inside rows
-            for (var column = 0; column < screen.width - (.50* screen.width); column++) {
+            for (var column = 0; column < screenDimensions.width / 40; column++) {
                 data[row].push({
                     x: xpos,
                     y: ypos,
@@ -221,8 +238,8 @@ function heatMap() {
 
     var grid = d3.select("#heatMap")
         .append("svg")
-        .attr("width",screen.width - (.50 * screen.width))
-        .attr("height",screen.height * .45);
+        .attr("width", widthCiaran)
+        .attr("height", screenDimensions.height * .45);
 
     var row = grid.selectAll(".row")
         .data(gridData)
@@ -230,21 +247,39 @@ function heatMap() {
         .attr("class", "row");
 
     var column = row.selectAll(".square")
-        .data(function(d) { return d; })
+        .data(function (d) {
+            return d;
+        })
         .enter().append("rect")
-        .attr("class","square")
-        .attr("x", function(d) { return d.x; })
-        .attr("y", function(d) { return d.y; })
-        .attr("width", function(d) { return d.width; })
-        .attr("height", function(d) { return d.height; })
+        .attr("class", "square")
+        .attr("x", function (d) {
+            return d.x;
+        })
+        .attr("y", function (d) {
+            return d.y;
+        })
+        .attr("width", function (d) {
+            return d.width;
+        })
+        .attr("height", function (d) {
+            return d.height;
+        })
         .style("fill", "#323439")
         .style("stroke", "#676a72")
-        .on('click', function(d) {
-            d.click ++;
-            if ((d.click)%4 == 0 ) { d3.select(this).style("fill","#fff"); }
-            if ((d.click)%4 == 1 ) { d3.select(this).style("fill","#2C93E8"); }
-            if ((d.click)%4 == 2 ) { d3.select(this).style("fill","#F56C4E"); }
-            if ((d.click)%4 == 3 ) { d3.select(this).style("fill","#838690"); }
+        .on('click', function (d) {
+            d.click++;
+            if ((d.click) % 4 == 0) {
+                d3.select(this).style("fill", "#fff");
+            }
+            if ((d.click) % 4 == 1) {
+                d3.select(this).style("fill", "#2C93E8");
+            }
+            if ((d.click) % 4 == 2) {
+                d3.select(this).style("fill", "#F56C4E");
+            }
+            if ((d.click) % 4 == 3) {
+                d3.select(this).style("fill", "#838690");
+            }
         });
 }
 
