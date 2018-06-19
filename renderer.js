@@ -6,16 +6,26 @@ const d3 = require('d3');
 var keyPressData = [
     {key: "Nothing yet!", value: 10}
 ];
+
+var GridValues = [
+    {Xmin:0,xMax:26}
+];
+
 pieChart(keyPressData);
 barChart(keyPressData);
+heatMap();
+
+function calculateHeatMapGrid() {
 
 
-//
+    return
+}
 
 function barChart(keyPressdata) {
 
     var clearBar = document.getElementById('barChart');
     clearBar.innerHTML = "";
+
 
     var color = d3.scaleOrdinal(d3.schemeCategory10);
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -175,6 +185,67 @@ function pieChart(keyPressData) {
         .attr('text-anchor', 'middle')
         .attr('dy', '.35em')
         .text(text);
+}
+
+function heatMap() {
+    function gridData() {
+        var data = new Array();
+        var xpos = 1;
+        var ypos = 1;
+        var width = 24;
+        var height = 23;
+        var click = 0;
+
+        // iterate for rows
+        for (var row = 0; row < screen.height/50; row++) {
+            data.push( new Array() );
+
+            // iterate for cells/columns inside rows
+            for (var column = 0; column < screen.width - (.50* screen.width); column++) {
+                data[row].push({
+                    x: xpos,
+                    y: ypos,
+                    width: width,
+                    height: height,
+                    click: click
+                })
+                xpos += width;
+            }
+            xpos = 1;
+            ypos += height;
+        }
+        return data;
+    }
+
+    var gridData = gridData();
+
+    var grid = d3.select("#heatMap")
+        .append("svg")
+        .attr("width",screen.width - (.50 * screen.width))
+        .attr("height",screen.height * .45);
+
+    var row = grid.selectAll(".row")
+        .data(gridData)
+        .enter().append("g")
+        .attr("class", "row");
+
+    var column = row.selectAll(".square")
+        .data(function(d) { return d; })
+        .enter().append("rect")
+        .attr("class","square")
+        .attr("x", function(d) { return d.x; })
+        .attr("y", function(d) { return d.y; })
+        .attr("width", function(d) { return d.width; })
+        .attr("height", function(d) { return d.height; })
+        .style("fill", "#323439")
+        .style("stroke", "#676a72")
+        .on('click', function(d) {
+            d.click ++;
+            if ((d.click)%4 == 0 ) { d3.select(this).style("fill","#fff"); }
+            if ((d.click)%4 == 1 ) { d3.select(this).style("fill","#2C93E8"); }
+            if ((d.click)%4 == 2 ) { d3.select(this).style("fill","#F56C4E"); }
+            if ((d.click)%4 == 3 ) { d3.select(this).style("fill","#838690"); }
+        });
 }
 
 require('electron').ipcRenderer.on('ping', (event, message) => {

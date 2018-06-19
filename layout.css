@@ -10,16 +10,18 @@
     color: aliceblue;
     font-family: Calibri;
 }
-
-.axisColour line{
+.mainFlexUpper {
+    margin-left: auto;
+}
+.axisColour line {
     stroke: aliceblue;
 }
 
-.axisColour path{
+.axisColour path {
     stroke: aliceblue;
 }
 
-.axisColour text{
+.axisColour text {
     fill: aliceblue;
 }
 
@@ -87,4 +89,54 @@
 
 .pie .value-text {
     font-size: 3em;
+}
+
+#heatMap {
+    display: block;
+    margin: auto;
+}
+
+#title {
+    font-size: 32px;
+    text-anchor: middle;
+}
+
+#description {
+    font-size: 15px;
+    text-anchor: middle;
+}
+
+.temperatures, .months {
+    font-size: 12px;
+}
+
+#tooltip {
+    background-color: rgba(187, 187, 187, 0.7);
+    border-radius: 5px;
+    height: 38px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 110px;
+    text-align: center;
+}
+
+.timeLabel, .dayLabel {
+    font-size: 1.6rem;
+    fill: #AAAAAA;
+    font-weight: 300;
+}
+
+#nav-container {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#nav-container .left {
+    margin-right: 20px;
+}
+
+#nav-container .right {
+    margin-left: 20px;
 }
