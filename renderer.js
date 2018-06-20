@@ -10,16 +10,66 @@ var keyPressData = [
 var GridValues = [
     {xMin: 0, xMax: 26, yMin: 0}
 ];
+global.screenDimensions = {width: screen.width, height: screen.height};
+global.widthCiaran = screenDimensions.width - (.50 * screenDimensions.width);
+
+function gridData() {
+    var data = new Array();
+    var xpos = 1;
+    var ypos = 1;
+    var boxWidth = screenDimensions.width * .01; //hopefully should be consistent across all monitors
+    var boxHeight = screenDimensions.height * .016; //Can't test on over 1080, this may look bad.
+    var click = 0;
+
+    /*
+    28 boxes DOWN
+     48 across
+
+    screenHeight / (screenDimensions.height / 40)
+     screenWidth / (screenDimensions.width / 40) = scaleAmount 1:40 1 box is representative of 40 pixels
+     */
+
+    var relativeX = 0;
+    var relativeY = 0;
+
+    // This is really dumb. But I just want to get this shit working. I will refactor later.
+    var relativeYIncrement = screenDimensions.height / (screenDimensions.height / 40);
+    var relativeXIncrement = screenDimensions.width / (screenDimensions.width / 40);
+
+
+    for (var row = 0; row < 28; row++) {
+        data.push(new Array());
+
+        for (var column = 0; column < screenDimensions.width / 40; column++) {
+            data[row].push({
+                x: xpos,
+                y: ypos,
+                width: boxWidth,
+                height: boxHeight,
+                click: click,
+                screenXStart: relativeX,
+                screenXEnd: relativeX + relativeXIncrement,
+                screenYStart: relativeY,
+                screenYEnd: relativeY + relativeYIncrement,
+                heatLevel: 0
+            })
+            relativeX += relativeXIncrement;
+            xpos += boxWidth;
+        }
+        xpos = 1;
+        relativeX = 0;
+
+        relativeY += relativeYIncrement;
+        ypos += boxHeight;
+    }
+    return data;
+}
+
+global.gridData = gridData();
 
 pieChart(keyPressData);
 barChart(keyPressData);
 heatMap();
-
-function calculateHeatMapGrid() {
-
-
-    return
-}
 
 function barChart(keyPressdata) {
 
@@ -188,53 +238,9 @@ function pieChart(keyPressData) {
 }
 
 function heatMap() {
-    // COMPUTATIONALLY EXPENSIVE MAKE NICE PLZ
 
-    var screenDimensions = {width: screen.width, height: screen.height};
-
-
-    var widthCiaran = screenDimensions.width - (.50 * screenDimensions.width);
-
-    function gridData() {
-        var data = new Array();
-        var xpos = 1;
-        var ypos = 1;
-        var width = 24;
-        var height = 23;
-        var click = 0;
-
-
-        /*
-        Figure out how to do it right you're not happy with the height variable
-        22 boxes DOWN 40 across
-
-        Maybe do it another time and actually get the thing done anyway.
-
-         */
-        // iterate for rows
-
-        //ROW = Y
-        for (var row = 0; row < screenDimensions.height * .45; row++) {
-            data.push(new Array());
-
-            // iterate for cells/columns inside rows
-            for (var column = 0; column < screenDimensions.width / 40; column++) {
-                data[row].push({
-                    x: xpos,
-                    y: ypos,
-                    width: width,
-                    height: height,
-                    click: click
-                })
-                xpos += width;
-            }
-            xpos = 1;
-            ypos += height;
-        }
-        return data;
-    }
-
-    var gridData = gridData();
+    var test = document.getElementById('heatMap');
+    test.innerHTML = "";
 
     var grid = d3.select("#heatMap")
         .append("svg")
@@ -273,6 +279,7 @@ function heatMap() {
             }
             if ((d.click) % 4 == 1) {
                 d3.select(this).style("fill", "#2C93E8");
+                console.log(d);
             }
             if ((d.click) % 4 == 2) {
                 d3.select(this).style("fill", "#F56C4E");
@@ -283,7 +290,56 @@ function heatMap() {
         });
 }
 
+
+function binarySearchX(x) {
+
+    var minIndex = 0;
+    var maxIndex = this.length - 1;
+    var currentIndex;
+    var currentElement;
+    var resultIndex;
+
+    var xValues = [];
+    for(let count =0 ; count < screenDimensions.width; count+40) {
+        xValues.push(count)
+    }
+
+    while (minIndex <= maxIndex) {
+        resultIndex = currentIndex = (minIndex + maxIndex) / 2 | 0;
+        currentElement = this[currentIndex];
+
+        if (currentElement < x) {
+            minIndex = currentIndex + 1;
+        }
+        else if (currentElement > x) {
+            maxIndex = currentIndex - 1;
+        }
+        else {
+            return currentIndex;
+        }
+    }
+
+    return ~maxIndex;
+
+
+}
+
+function findWhereInGrid(mouseMovement) {
+
+    /* Binary Search
+    firstly look at Y axis. Since every row is on the same Y.
+    Then do another binary search on the X axis.
+    Return the values.
+     */
+    // binarySearchY(mouseMovement.y);
+    binarySearchX(mouseMovement.x);
+}
+
 require('electron').ipcRenderer.on('ping', (event, message) => {
     pieChart(message);
     barChart(message);
+});
+
+require('electron').ipcRenderer.on('mouseMove', (event, message) => {
+    findWhereInGrid(message);
 });

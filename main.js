@@ -51,6 +51,7 @@ app.on('activate', function () {
 
 global.isStart = true;
 ioHook.on('mousemove', event => {
+    mainWindow.webContents.send('mouseMove', event);
     //   console.log(event);
 });
 
