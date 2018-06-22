@@ -7,69 +7,12 @@ var keyPressData = [
     {key: "Nothing yet!", value: 10}
 ];
 
-var GridValues = [
-    {xMin: 0, xMax: 26, yMin: 0}
-];
+var mousePoints = [];
 global.screenDimensions = {width: screen.width, height: screen.height};
-global.widthCiaran = screenDimensions.width - (.50 * screenDimensions.width);
 
-function gridData() {
-    var data = new Array();
-    var xpos = 1;
-    var ypos = 1;
-    var boxWidth = screenDimensions.width * .01; //hopefully should be consistent across all monitors
-    var boxHeight = screenDimensions.height * .016; //Can't test on over 1080, this may look bad.
-    var click = 0;
-
-    /*
-    28 boxes DOWN
-     48 across
-
-    screenHeight / (screenDimensions.height / 40)
-     screenWidth / (screenDimensions.width / 40) = scaleAmount 1:40 1 box is representative of 40 pixels
-     */
-
-    var relativeX = 0;
-    var relativeY = 0;
-
-    // This is really dumb. But I just want to get this shit working. I will refactor later.
-    var relativeYIncrement = screenDimensions.height / (screenDimensions.height / 40);
-    var relativeXIncrement = screenDimensions.width / (screenDimensions.width / 40);
-
-
-    for (var row = 0; row < 28; row++) {
-        data.push(new Array());
-
-        for (var column = 0; column < screenDimensions.width / 40; column++) {
-            data[row].push({
-                x: xpos,
-                y: ypos,
-                width: boxWidth,
-                height: boxHeight,
-                click: click,
-                screenXStart: relativeX,
-                screenXEnd: relativeX + relativeXIncrement,
-                screenYStart: relativeY,
-                screenYEnd: relativeY + relativeYIncrement,
-                heatLevel: 0
-            })
-            relativeX += relativeXIncrement;
-            xpos += boxWidth;
-        }
-        xpos = 1;
-        relativeX = 0;
-
-        relativeY += relativeYIncrement;
-        ypos += boxHeight;
-    }
-    return data;
-}
-
-global.gridData = gridData();
 
 pieChart(keyPressData);
 barChart(keyPressData);
-heatMap();
 
 function barChart(keyPressdata) {
 
@@ -237,102 +180,49 @@ function pieChart(keyPressData) {
         .text(text);
 }
 
-function heatMap() {
+function artsyMouseMovements(event) {
+    var clearBar = document.getElementById('mouseMovements');
+    clearBar.innerHTML = "";
 
-    var test = document.getElementById('heatMap');
-    test.innerHTML = "";
 
-    var grid = d3.select("#heatMap")
-        .append("svg")
-        .attr("width", widthCiaran)
-        .attr("height", screenDimensions.height * .45);
+    var svg = d3.select("#mouseMovements").append("svg")
+        .attr("width", screenDimensions.width / 2)
+        .attr("height", screenDimensions.height / 2 - 50);
 
-    var row = grid.selectAll(".row")
-        .data(gridData)
-        .enter().append("g")
-        .attr("class", "row");
+    svg.append('rect')
+        .attr("x", 1)
+        .attr("y", 1)
+        .attr("width", screenDimensions.width / 2)
+        .attr("height", screenDimensions.height / 2)
+        .attr("fill", d3.rgb('#323439'));
 
-    var column = row.selectAll(".square")
-        .data(function (d) {
-            return d;
-        })
-        .enter().append("rect")
-        .attr("class", "square")
-        .attr("x", function (d) {
-            return d.x;
-        })
-        .attr("y", function (d) {
-            return d.y;
-        })
-        .attr("width", function (d) {
-            return d.width;
-        })
-        .attr("height", function (d) {
-            return d.height;
-        })
-        .style("fill", "#323439")
-        .style("stroke", "#676a72")
-        .on('click', function (d) {
-            d.click++;
-            if ((d.click) % 4 == 0) {
-                d3.select(this).style("fill", "#fff");
-            }
-            if ((d.click) % 4 == 1) {
-                d3.select(this).style("fill", "#2C93E8");
-                console.log(d);
-            }
-            if ((d.click) % 4 == 2) {
-                d3.select(this).style("fill", "#F56C4E");
-            }
-            if ((d.click) % 4 == 3) {
-                d3.select(this).style("fill", "#838690");
-            }
-        });
+    if (mousePoints.length > 0)
+        svg.append("polyline")
+            .style("fill", "aliceblue")
+            .attr("points", mousePoints);
 }
 
-
-function binarySearchX(x) {
-
-    var minIndex = 0;
-    var maxIndex = this.length - 1;
-    var currentIndex;
-    var currentElement;
-    var resultIndex;
-
-    var xValues = [];
-    for(let count =0 ; count < screenDimensions.width; count+40) {
-        xValues.push(count)
-    }
-
-    while (minIndex <= maxIndex) {
-        resultIndex = currentIndex = (minIndex + maxIndex) / 2 | 0;
-        currentElement = this[currentIndex];
-
-        if (currentElement < x) {
-            minIndex = currentIndex + 1;
-        }
-        else if (currentElement > x) {
-            maxIndex = currentIndex - 1;
-        }
-        else {
-            return currentIndex;
-        }
-    }
-
-    return ~maxIndex;
+function mouseMovements(event) {
+    var clearBar = document.getElementById('mouseMovements');
+    clearBar.innerHTML = "";
 
 
-}
+    var svg = d3.select("#mouseMovements").append("svg")
+        .attr("width", screenDimensions.width / 2)
+        .attr("height", screenDimensions.height / 2 - 50);
 
-function findWhereInGrid(mouseMovement) {
+    svg.append('rect')
+        .attr("x", 1)
+        .attr("y", 1)
+        .attr("width", screenDimensions.width / 2)
+        .attr("height", screenDimensions.height / 2)
+        .attr("fill", d3.rgb('#323439'));
 
-    /* Binary Search
-    firstly look at Y axis. Since every row is on the same Y.
-    Then do another binary search on the X axis.
-    Return the values.
-     */
-    // binarySearchY(mouseMovement.y);
-    binarySearchX(mouseMovement.x);
+    if (mousePoints.length > 0)
+        svg.append("polyline")
+            .style("stroke", "aliceblue")
+            .attr("points", mousePoints)
+            .attr("fill", d3.rgb('#323439'));
 }
 
 require('electron').ipcRenderer.on('ping', (event, message) => {
@@ -340,6 +230,12 @@ require('electron').ipcRenderer.on('ping', (event, message) => {
     barChart(message);
 });
 
+function convertRange(value, r1, r2) {
+    return (value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0]) + r2[0];
+}
+
 require('electron').ipcRenderer.on('mouseMove', (event, message) => {
-    findWhereInGrid(message);
+    mousePoints.push(convertRange(message.x, [0, screenDimensions.width], [0, screenDimensions.width / 2]));
+    mousePoints.push(convertRange(message.y, [0, screenDimensions.height], [0, screenDimensions.height / 2]));
+    mouseMovements();
 });

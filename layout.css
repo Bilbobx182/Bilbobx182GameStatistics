@@ -140,3 +140,9 @@
 #nav-container .right {
     margin-left: 20px;
 }
+
+#mouseMovements {
+    margin-left: auto;
+    padding-right: 5px;
+    padding-top: 5px;
+}
