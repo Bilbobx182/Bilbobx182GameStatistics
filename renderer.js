@@ -1,18 +1,33 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
 const d3 = require('d3');
 
+global.heatMapValues = Array();
+var mousePoints = [];
 var keyPressData = [
     {key: "Nothing yet!", value: 10}
 ];
-
-var mousePoints = [];
 global.screenDimensions = {width: screen.width, height: screen.height};
 
+init();
 
-pieChart(keyPressData);
-barChart(keyPressData);
+function init() {
+
+
+    for (let y = 0; y < screenDimensions.height / 2; y++) {
+        heatMapValues[y] = [];
+        for (let x = 0; x < screenDimensions.width / 2; x++) {
+            heatMapValues[y].push({
+                x: x,
+                y: y,
+                width: 20,
+                height: 20,
+                value: 0
+            })
+        }
+    }
+    pieChart(keyPressData);
+    barChart(keyPressData);
+    heatMap();
+}
 
 function barChart(keyPressdata) {
 
@@ -180,6 +195,107 @@ function pieChart(keyPressData) {
         .text(text);
 }
 
+function heatMap() {
+
+    var margin = {top: 100, right: 20, bottom: 50, left: 100},
+        width = 700,
+        height = 700;
+
+    var x = d3.scaleLinear().range([0, 500])
+        .domain([0, 20]);
+
+
+    var grid = d3.select("#mouseMovements").append("grid")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+
+    var colors = ["#fff5eb", "#fee6ce", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#a63603", "#7f2704"];
+//    var colors = ["red","blue","green"];
+    var colorScale = d3.scaleQuantile()
+        .domain([0, 20])
+        .range(colors);
+
+    var row = grid.selectAll(".row")
+        .data(heatMapValues)
+        .enter().append("g")
+        .attr("class", "row");
+
+    var tooltip = grid.append("text").attr("class", "toolTip");
+
+    var column = row.selectAll(".square")
+        .data(function (d) {
+            return d;
+        })
+        .enter().append("rect")
+        .attr("class", "square")
+        .attr("x", function (d) {
+            return d.x + 50;
+        })
+        .attr("y", function (d) {
+            return d.y + 50;
+        })
+        .attr("width", function (d) {
+            return d.width;
+        })
+        .attr("height", function (d) {
+            return d.height;
+        })
+        .style("fill", function (d) {
+            return colorScale(d.value);
+        })
+        .style("stroke", "#222")
+        .on("mouseover", function (d) {
+
+            tooltip.style("visibility", "visible")
+                .attr("x", d.x + 70)
+                .attr("y", d.y + 70)
+                .attr("font-size", "20px")
+                .text(d.value);
+        })
+        .on("mouseout", function (d) {
+            tooltip.style("visibility", "hidden");
+        });
+
+    grid.append("g")
+        .attr("transform", "translate(0," + 50 + ")")
+        .call(d3.axisRight(x)
+            .ticks(6));
+
+    grid.append("text")
+        .attr("transform", "translate(" + (280) + " ," + (600) + ")")
+        .style("text-anchor", "middle")
+        .text("HEAT-MAP");
+
+    grid.append("g")
+        .attr("transform", "translate(" + 50 + ",0)")
+        .call(d3.axisBottom(x)
+            .ticks(6));
+
+}
+
+require('electron').ipcRenderer.on('ping', (event, message) => {
+    pieChart(message);
+    barChart(message);
+});
+
+function convertRange(value, r1, r2) {
+    return (value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0]) + r2[0];
+}
+
+require('electron').ipcRenderer.on('mouseMove', (event, message) => {
+    let xLocation = Math.floor(convertRange(message.x, [0, screenDimensions.width], [0, screenDimensions.width / 2]));
+    let yLocation = Math.floor(convertRange(message.y, [0, screenDimensions.height], [0, screenDimensions.height / 2]));
+
+    mousePoints.push(xLocation);
+    mousePoints.push(yLocation);
+
+    heatMapValues[yLocation][xLocation] += 1;
+});
+
 function artsyMouseMovements(event) {
     var clearBar = document.getElementById('mouseMovements');
     clearBar.innerHTML = "";
@@ -224,18 +340,3 @@ function mouseMovements(event) {
             .attr("points", mousePoints)
             .attr("fill", d3.rgb('#323439'));
 }
-
-require('electron').ipcRenderer.on('ping', (event, message) => {
-    pieChart(message);
-    barChart(message);
-});
-
-function convertRange(value, r1, r2) {
-    return (value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0]) + r2[0];
-}
-
-require('electron').ipcRenderer.on('mouseMove', (event, message) => {
-    mousePoints.push(convertRange(message.x, [0, screenDimensions.width], [0, screenDimensions.width / 2]));
-    mousePoints.push(convertRange(message.y, [0, screenDimensions.height], [0, screenDimensions.height / 2]));
-    mouseMovements();
-});
