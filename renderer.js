@@ -221,10 +221,10 @@ function heatMap() {
 
     rectangles
         .attr("x", function (d) {
-            return d.yLocation;
+            return d.xLocation;
         })
         .attr("y", function (d) {
-            return d.xLocation;
+            return d.yLocation;
         })
         .attr("width", 40)
         .attr("height", 40).style("fill", function (d) {
@@ -248,7 +248,10 @@ require('electron').ipcRenderer.on('mouseMove', (event, message) => {
     mousePoints.push(xLocation);
     mousePoints.push(yLocation);
 
-    objIndex = heatMapValues.findIndex((obj => obj.xLocation ==Math.round(xLocation / 40) * 40  && obj.yLocation ==Math.round(xLocation / 40) * yLocation));
+    let xRounded = Math.round(xLocation / 40) * 40;
+    let yRounded = Math.round(yLocation / 40) * 40;
+
+    objIndex = heatMapValues.findIndex((obj => obj.xLocation == xRounded && obj.yLocation == yRounded));
 
     console.log(objIndex);
 
