@@ -1,18 +1,21 @@
 const d3 = require('d3');
 
+
+
 global.heatMapValues = [];
 var mousePoints = [];
 var keyPressData = [
     {key: "Nothing yet!", value: 10}
 ];
 global.screenDimensions = {width: screen.width, height: screen.height};
+var arbitraryHeatPixelationLevel = Math.round(((screenDimensions.height/2) -40) * .04);
 
 init();
 
 function init() {
 
-    for (let y = 0; y < screenDimensions.height / 2; y += 40) {
-        for (let x = 0; x < screenDimensions.width / 2; x += 40) {
+    for (let y = 0; y < (screenDimensions.height/2) ; y += arbitraryHeatPixelationLevel) {
+        for (let x = 0; x < screenDimensions.width / 2; x += arbitraryHeatPixelationLevel) {
             heatMapValues.push({
                 xLocation: x,
                 yLocation: y,
@@ -36,7 +39,7 @@ function barChart(keyPressdata) {
     var color = d3.scaleOrdinal(d3.schemeCategory10);
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
         width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        height = screenDimensions.height *.42 - margin.top - margin.bottom;
 
 // set the ranges
     var x = d3.scaleBand()
@@ -204,14 +207,20 @@ function heatMap() {
     });
     var colorScale = d3.scaleOrdinal()
         .domain(colorDomain)
-        .range(["#5E4FA2", "#3288BD", "#66C2A5", "#ABDDA4", "#E6F598",
-            "#FFFFBF", "#FEE08B", "#FDAE61", "#F46D43", "#D53E4F", "#9E0142"]);
+        .range([
+            "#052899", "#0C2792", "#14278C", "#1C2785", "#23277F",
+            "#2B2679", "#332672", "#3A266C", "#422666", "#4A265F",
+            "#512559", "#592552", "#61254C", "#682546", "#70253F",
+            "#782439", "#7F2433", "#87242C", "#8F2426", "#96241F",
+            "#9E2319", "#A62313", "#AD230C", "#B52306", "#BD2300",
+
+        ]);
 
 
     var svg = d3.select("#mouseMovements")
         .append("svg")
         .attr("width", screenDimensions.width / 2)
-        .attr("height", screenDimensions.height / 2);
+        .attr("height", (screenDimensions.height/2));
 
 
     var rectangles = svg.selectAll("rect")
@@ -226,8 +235,8 @@ function heatMap() {
         .attr("y", function (d) {
             return d.yLocation;
         })
-        .attr("width", 40)
-        .attr("height", 40).style("fill", function (d) {
+        .attr("width", arbitraryHeatPixelationLevel)
+        .attr("height", arbitraryHeatPixelationLevel).style("fill", function (d) {
         return colorScale(d.heatLevel);
     });
 }
@@ -248,8 +257,8 @@ require('electron').ipcRenderer.on('mouseMove', (event, message) => {
     mousePoints.push(xLocation);
     mousePoints.push(yLocation);
 
-    let xRounded = Math.round(xLocation / 40) * 40;
-    let yRounded = Math.round(yLocation / 40) * 40;
+    let xRounded = Math.round(xLocation / arbitraryHeatPixelationLevel) * arbitraryHeatPixelationLevel;
+    let yRounded = Math.round(yLocation / arbitraryHeatPixelationLevel) * arbitraryHeatPixelationLevel;
 
     objIndex = heatMapValues.findIndex((obj => obj.xLocation == xRounded && obj.yLocation == yRounded));
 

@@ -43,7 +43,7 @@
 .mainFlexUpper {
     display: flex;
     order: 2;
-    height: 50%;
+    height: 55%;
     width: 100%;
     justify-content: space-around;
     border-bottom-style: solid;
@@ -52,7 +52,7 @@
 .mainFlexLower {
     display: flex;
     order: 3;
-    height: 50%;
+    height: 45%;
     width: 100%;
     justify-content: space-around;
 }
@@ -96,41 +96,14 @@
     margin: auto;
 }
 
-#title {
-    font-size: 32px;
-    text-anchor: middle;
-}
-
-#description {
-    font-size: 15px;
-    text-anchor: middle;
-}
-
-.temperatures, .months {
-    font-size: 12px;
-}
-
-#tooltip {
-    background-color: rgba(187, 187, 187, 0.7);
-    border-radius: 5px;
-    height: 38px;
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-    width: 110px;
-    text-align: center;
-}
-
-.timeLabel, .dayLabel {
-    font-size: 1.6rem;
-    fill: #AAAAAA;
-    font-weight: 300;
-}
-
 #nav-container {
     display: flex;
     justify-content: center;
     cursor: pointer;
+}
+
+.mouseMovements {
+    padding-bottom: 5px;
 }
 
 #nav-container .left {
