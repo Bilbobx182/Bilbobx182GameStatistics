@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "d3": "^5.4.0",
+    "d3-selection-multi": "^1.0.1",
     "electron-rebuild": "^1.7.3",
     "iohook": "^0.2.0"
   },

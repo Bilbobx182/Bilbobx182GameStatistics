@@ -13,7 +13,7 @@ global.keyCodeToAlphabet = {};
 
 function createWindow() {
     mainWindow = new BrowserWindow({width: 1920, height: 1080})
-   //mainWindow.setMenu(null);
+    //mainWindow.setMenu(null);
     mainWindow.maximize();
     setKeys();
 
@@ -51,6 +51,8 @@ app.on('activate', function () {
 });
 
 global.isStart = true;
+var mouseMoveCount = 0;
+
 ioHook.on('mousemove', event => {
     mainWindow.webContents.send('mouseMove', event);
     //   console.log(event);

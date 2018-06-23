@@ -1,20 +1,19 @@
 const d3 = require('d3');
 
 
-
 global.heatMapValues = [];
 var mousePoints = [];
 var keyPressData = [
     {key: "Nothing yet!", value: 10}
 ];
 global.screenDimensions = {width: screen.width, height: screen.height};
-var arbitraryHeatPixelationLevel = Math.round(((screenDimensions.height/2) -40) * .04);
+var arbitraryHeatPixelationLevel = Math.round(((screenDimensions.height / 2) - 40) * .08);
 
 init();
 
 function init() {
 
-    for (let y = 0; y < (screenDimensions.height/2) ; y += arbitraryHeatPixelationLevel) {
+    for (let y = 0; y < (screenDimensions.height / 2); y += arbitraryHeatPixelationLevel) {
         for (let x = 0; x < screenDimensions.width / 2; x += arbitraryHeatPixelationLevel) {
             heatMapValues.push({
                 xLocation: x,
@@ -30,6 +29,10 @@ function init() {
     heatMap();
 }
 
+function convertRange(value, r1, r2) {
+    return (value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0]) + r2[0];
+}
+
 function barChart(keyPressdata) {
 
     var clearBar = document.getElementById('barChart');
@@ -39,7 +42,7 @@ function barChart(keyPressdata) {
     var color = d3.scaleOrdinal(d3.schemeCategory10);
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
         width = 960 - margin.left - margin.right,
-        height = screenDimensions.height *.42 - margin.top - margin.bottom;
+        height = screenDimensions.height * .42 - margin.top - margin.bottom;
 
 // set the ranges
     var x = d3.scaleBand()
@@ -198,29 +201,54 @@ function pieChart(keyPressData) {
 
 function heatMap() {
 
+
     var test = document.getElementById('mouseMovements');
     test.innerHTML = "";
 
 
+
+    var highest = Math.max.apply(Math,heatMapValues.map(function(o){return o.heatLevel;}))
+
+    /* I think because we have it as 28 across each representing an area of 40px all the little occurences within that area count ie the cost of going from 1 square to another is multiplied by 40  */
+
     var colorDomain = d3.extent(heatMapValues, function (d) {
-        return d.heatLevel;
+        return Math.floor(convertRange(d.heatLevel, [0, highest], [0, 25]));
     });
-    var colorScale = d3.scaleOrdinal()
+    var colorScale = d3.scaleLinear()
         .domain(colorDomain)
         .range([
-            "#052899", "#0C2792", "#14278C", "#1C2785", "#23277F",
-            "#2B2679", "#332672", "#3A266C", "#422666", "#4A265F",
-            "#512559", "#592552", "#61254C", "#682546", "#70253F",
-            "#782439", "#7F2433", "#87242C", "#8F2426", "#96241F",
-            "#9E2319", "#A62313", "#AD230C", "#B52306", "#BD2300",
-
+            "#052899",
+            "#043E9A",
+            "#04559C",
+            "#046D9D",
+            "#04859F",
+            "#049DA0",
+            "#03A28D",
+            "#03A376",
+            "#03A55F",
+            "#03A648",
+            "#03A830",
+            "#03A917",
+            "#07AB02",
+            "#20AC02",
+            "#39AE02",
+            "#54AF02",
+            "#6EB101",
+            "#8AB201",
+            "#A5B401",
+            "#B5A901",
+            "#B78F00",
+            "#B87400",
+            "#BA5A00",
+            "#BB3E00",
+            "#BD2200",
         ]);
 
 
     var svg = d3.select("#mouseMovements")
         .append("svg")
         .attr("width", screenDimensions.width / 2)
-        .attr("height", (screenDimensions.height/2));
+        .attr("height", (screenDimensions.height / 2));
 
 
     var rectangles = svg.selectAll("rect")
@@ -240,44 +268,6 @@ function heatMap() {
         return colorScale(d.heatLevel);
     });
 }
-
-require('electron').ipcRenderer.on('ping', (event, message) => {
-    pieChart(message);
-    barChart(message);
-});
-
-function convertRange(value, r1, r2) {
-    return (value - r1[0]) * (r2[1] - r2[0]) / (r1[1] - r1[0]) + r2[0];
-}
-
-require('electron').ipcRenderer.on('mouseMove', (event, message) => {
-
-    let isArtsy = false;
-    let isHeatMap = true;
-
-    let xLocation = Math.floor(convertRange(message.x, [0, screenDimensions.width], [0, screenDimensions.width / 2]));
-    let yLocation = Math.floor(convertRange(message.y, [0, screenDimensions.height], [0, screenDimensions.height / 2]));
-
-    mousePoints.push(xLocation);
-    mousePoints.push(yLocation);
-
-    if(isArtsy) {
-        artsyMouseMovements(event);
-    }
-    if(isHeatMap) {
-        let xRounded = Math.round(xLocation / arbitraryHeatPixelationLevel) * arbitraryHeatPixelationLevel;
-        let yRounded = Math.round(yLocation / arbitraryHeatPixelationLevel) * arbitraryHeatPixelationLevel;
-
-        objIndex = heatMapValues.findIndex((obj => obj.xLocation == xRounded && obj.yLocation == yRounded));
-
-        if(objIndex >= 0) {
-            heatMapValues[objIndex].heatLevel += 1;
-        }
-
-        heatMap();
-    }
-
-});
 
 function artsyMouseMovements(event) {
     var clearBar = document.getElementById('mouseMovements');
@@ -323,3 +313,59 @@ function mouseMovements(event) {
             .attr("points", mousePoints)
             .attr("fill", d3.rgb('#323439'));
 }
+
+createButton();
+
+function createButton() {
+    var svg = d3.select("#menu")
+        .append("svg")
+        .attr("width", Math.round(300))
+        .attr("height", Math.round(600));
+
+
+    svg.append('rect')
+        .attr("x", 10)
+        .attr("y", 10)
+        .attr("width", Math.round(screenDimensions.width * .04))
+        .attr("height", Math.round(screenDimensions.height * .02))
+        .attr("fill", 'red');
+
+
+    //  .transition()
+    //         .duration(5000)
+    //         .attrs({x: 460, y: 150, width: 40, height: 40, fill: 'blue'})
+}
+
+require('electron').ipcRenderer.on('mouseMove', (event, message) => {
+
+    let isArtsy = false;
+    let isHeatMap = true;
+
+    let xLocation = Math.floor(convertRange(message.x, [0, screenDimensions.width], [0, screenDimensions.width / 2]));
+    let yLocation = Math.floor(convertRange(message.y, [0, screenDimensions.height], [0, screenDimensions.height / 2]));
+
+    mousePoints.push(xLocation);
+    mousePoints.push(yLocation);
+
+    if (isArtsy) {
+        artsyMouseMovements(event);
+    }
+    if (isHeatMap) {
+        let xRounded = Math.round(xLocation / arbitraryHeatPixelationLevel) * arbitraryHeatPixelationLevel;
+        let yRounded = Math.round(yLocation / arbitraryHeatPixelationLevel) * arbitraryHeatPixelationLevel;
+
+        objIndex = heatMapValues.findIndex((obj => obj.xLocation == xRounded && obj.yLocation == yRounded));
+
+        if (objIndex >= 0) {
+            heatMapValues[objIndex].heatLevel += 1;
+        }
+
+        heatMap();
+    }
+
+});
+
+require('electron').ipcRenderer.on('ping', (event, message) => {
+    pieChart(message);
+    barChart(message);
+});
