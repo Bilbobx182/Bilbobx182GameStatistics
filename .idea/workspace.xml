@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e8ec07d-2fb8-4dd9-8b5e-dc6820ca0cf3" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iohook-crash.log" beforeDir="false" afterPath="$PROJECT_DIR$/iohook-crash.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/renderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/renderer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,14 +18,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="renderer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="renderer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/renderer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="200" column="20" selection-start-line="200" selection-start-column="20" selection-end-line="200" selection-end-column="20" />
+            <state relative-caret-position="1411">
+              <caret line="247" selection-start-line="247" selection-end-line="247" />
               <folding>
                 <element signature="n#!!block;n#barChart#0" />
                 <element signature="n#!!block;n#pieChart#0" />
+                <element signature="n#!!block;n#convertRange#0" />
                 <element signature="n#!!block;n#artsyMouseMovements#0" />
                 <element signature="n#!!block;n#mouseMovements#0" />
               </folding>
@@ -43,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="layout.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layout.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="474">
@@ -64,7 +64,6 @@
       <find>block</find>
       <find>blok</find>
       <find>outerPie</find>
-      <find>scale</find>
       <find>cards.append</find>
       <find>mainflex</find>
       <find>getas</find>
@@ -72,6 +71,8 @@
       <find>browser</find>
       <find>artsy</find>
       <find>mousemOVE</find>
+      <find>axis</find>
+      <find>scale</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -87,8 +88,8 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/numMatrix.csv" />
         <option value="$PROJECT_DIR$/main.js" />
-        <option value="$PROJECT_DIR$/renderer.js" />
         <option value="$PROJECT_DIR$/layout.css" />
+        <option value="$PROJECT_DIR$/renderer.js" />
       </list>
     </option>
   </component>
@@ -218,12 +219,13 @@
       <workItem from="1529408542102" duration="11961000" />
       <workItem from="1529488680045" duration="6582000" />
       <workItem from="1529509617854" duration="3634000" />
-      <workItem from="1529685377545" duration="6573000" />
+      <workItem from="1529685377545" duration="7651000" />
+      <workItem from="1529753739011" duration="3805000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71117000" />
+    <option name="totallyTimeSpent" value="76000000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
@@ -233,12 +235,12 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297414" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3297414" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3275862" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.2963362" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.28879312" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -249,20 +251,20 @@
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3297414" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297414" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2963362" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3286638" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -279,6 +281,12 @@
           <properties name="TypeError" />
           <option name="timeStamp" value="87" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/renderer.js</url>
+          <line>24</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -288,20 +296,12 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="107" />
+      <option name="time" value="117" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="NodeJSConfigurationType">
         <watch expression="electron.screen" language="JavaScript" />
         <watch expression="app.screen" language="JavaScript" />
-      </configuration>
-      <configuration name="ChromiumRemoteDebugType">
-        <watch expression="heatMapValues" language="JavaScript" />
-        <watch expression="heatMapValues[0][0]" language="JavaScript" />
-        <watch expression="heatMapValues[0]" language="JavaScript" />
-        <watch expression="heatMapValues[0][0].push(0)" language="JavaScript" />
-        <watch expression="heat" language="JavaScript" />
-        <watch expression="heatMapValues[0][0] = 1" language="JavaScript" />
       </configuration>
     </watches-manager>
   </component>
@@ -374,6 +374,7 @@
           <folding>
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
             <element signature="n#!!block;n#mouseMovements#0" />
           </folding>
@@ -415,6 +416,7 @@
           <folding>
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
             <element signature="n#!!block;n#mouseMovements#0" />
           </folding>
@@ -456,6 +458,7 @@
           <folding>
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
             <element signature="n#!!block;n#mouseMovements#0" />
           </folding>
@@ -521,6 +524,7 @@
           <folding>
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
             <element signature="n#!!block;n#mouseMovements#0" />
           </folding>
@@ -562,6 +566,7 @@
           <folding>
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
             <element signature="n#!!block;n#mouseMovements#0" />
           </folding>
@@ -589,6 +594,7 @@
           <folding>
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
             <element signature="n#!!block;n#mouseMovements#0" />
           </folding>
@@ -624,11 +630,6 @@
         <state relative-caret-position="238">
           <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/d3/dist/d3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-294506" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/d3-selection/dist/d3-selection.js">
@@ -694,9 +695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
-          <folding>
-            <element signature="n#!!block;n#transformKeyEvent#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -714,16 +712,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/renderer.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/d3/dist/d3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="200" column="20" selection-start-line="200" selection-start-column="20" selection-end-line="200" selection-end-column="20" />
-          <folding>
-            <element signature="n#!!block;n#barChart#0" />
-            <element signature="n#!!block;n#pieChart#0" />
-            <element signature="n#!!block;n#artsyMouseMovements#0" />
-            <element signature="n#!!block;n#mouseMovements#0" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="731" column="9" selection-start-line="731" selection-start-column="9" selection-end-line="731" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -731,6 +723,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="474">
           <caret line="141" column="1" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="247" selection-start-line="247" selection-end-line="247" />
+          <folding>
+            <element signature="n#!!block;n#barChart#0" />
+            <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#convertRange#0" />
+            <element signature="n#!!block;n#artsyMouseMovements#0" />
+            <element signature="n#!!block;n#mouseMovements#0" />
+          </folding>
         </state>
       </provider>
     </entry>

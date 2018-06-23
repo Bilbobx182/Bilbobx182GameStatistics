@@ -1,6 +1,6 @@
 const d3 = require('d3');
 
-global.heatMapValues = Array();
+global.heatMapValues = [];
 var mousePoints = [];
 var keyPressData = [
     {key: "Nothing yet!", value: 10}
@@ -11,19 +11,17 @@ init();
 
 function init() {
 
-
-    for (let y = 0; y < screenDimensions.height / 2; y++) {
-        heatMapValues[y] = [];
-        for (let x = 0; x < screenDimensions.width / 2; x++) {
-            heatMapValues[y].push({
-                x: x,
-                y: y,
-                width: 20,
-                height: 20,
+    for (let y = 0; y < screenDimensions.height / 2; y+=40) {
+        for (let x = 0; x < screenDimensions.width / 2; x+=40) {
+            heatMapValues.push({
+                xLocation: x,
+                yLocation: y,
                 value: 0
             })
         }
+        x=0;
     }
+
     pieChart(keyPressData);
     barChart(keyPressData);
     heatMap();
@@ -197,84 +195,39 @@ function pieChart(keyPressData) {
 
 function heatMap() {
 
-    var margin = {top: 100, right: 20, bottom: 50, left: 100},
-        width = 700,
-        height = 700;
-
-    var x = d3.scaleLinear().range([0, 500])
-        .domain([0, 20]);
+    var test = document.getElementById('mouseMovements');
+    test.innerHTML = "";
 
 
-    var grid = d3.select("#mouseMovements").append("grid")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
+    var colorDomain = d3.extent(heatMapValues, function (d) {
+        return d.value;
+    });
+    var colorScale = d3.scaleLinear()
+        .domain(colorDomain)
+        .range(["lightblue", "blue"]);
+
+    var svg = d3.select("#mouseMovements")
+        .append("svg")
+        .attr("width", screenDimensions.width / 2)
+        .attr("height", screenDimensions.height / 2);
 
 
-    var colors = ["#fff5eb", "#fee6ce", "#fdd0a2", "#fdae6b", "#fd8d3c", "#f16913", "#d94801", "#a63603", "#7f2704"];
-//    var colors = ["red","blue","green"];
-    var colorScale = d3.scaleQuantile()
-        .domain([0, 20])
-        .range(colors);
-
-    var row = grid.selectAll(".row")
+    var rectangles = svg.selectAll("rect")
         .data(heatMapValues)
-        .enter().append("g")
-        .attr("class", "row");
+        .enter()
+        .append("rect");
 
-    var tooltip = grid.append("text").attr("class", "toolTip");
-
-    var column = row.selectAll(".square")
-        .data(function (d) {
-            return d;
-        })
-        .enter().append("rect")
-        .attr("class", "square")
+    rectangles
         .attr("x", function (d) {
-            return d.x + 50;
+            return d.yLocation;
         })
         .attr("y", function (d) {
-            return d.y + 50;
+            return d.xLocation;
         })
-        .attr("width", function (d) {
-            return d.width;
-        })
-        .attr("height", function (d) {
-            return d.height;
-        })
-        .style("fill", function (d) {
-            return colorScale(d.value);
-        })
-        .style("stroke", "#222")
-        .on("mouseover", function (d) {
-
-            tooltip.style("visibility", "visible")
-                .attr("x", d.x + 70)
-                .attr("y", d.y + 70)
-                .attr("font-size", "20px")
-                .text(d.value);
-        })
-        .on("mouseout", function (d) {
-            tooltip.style("visibility", "hidden");
-        });
-
-    grid.append("g")
-        .attr("transform", "translate(0," + 50 + ")")
-        .call(d3.axisRight(x)
-            .ticks(6));
-
-    grid.append("text")
-        .attr("transform", "translate(" + (280) + " ," + (600) + ")")
-        .style("text-anchor", "middle")
-        .text("HEAT-MAP");
-
-    grid.append("g")
-        .attr("transform", "translate(" + 50 + ",0)")
-        .call(d3.axisBottom(x)
-            .ticks(6));
-
+        .attr("width", 40)
+        .attr("height", 40).style("fill", function (d) {
+        return colorScale(d.value);
+    });
 }
 
 require('electron').ipcRenderer.on('ping', (event, message) => {
@@ -293,7 +246,7 @@ require('electron').ipcRenderer.on('mouseMove', (event, message) => {
     mousePoints.push(xLocation);
     mousePoints.push(yLocation);
 
-    heatMapValues[yLocation][xLocation] += 1;
+    heatMap();
 });
 
 function artsyMouseMovements(event) {
