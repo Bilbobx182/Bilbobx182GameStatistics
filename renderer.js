@@ -11,15 +11,15 @@ init();
 
 function init() {
 
-    for (let y = 0; y < screenDimensions.height / 2; y+=40) {
-        for (let x = 0; x < screenDimensions.width / 2; x+=40) {
+    for (let y = 0; y < screenDimensions.height / 2; y += 40) {
+        for (let x = 0; x < screenDimensions.width / 2; x += 40) {
             heatMapValues.push({
                 xLocation: x,
                 yLocation: y,
-                value: 0
+                heatLevel: 0
             })
         }
-        x=0;
+        x = 0;
     }
 
     pieChart(keyPressData);
@@ -200,11 +200,13 @@ function heatMap() {
 
 
     var colorDomain = d3.extent(heatMapValues, function (d) {
-        return d.value;
+        return d.heatLevel;
     });
-    var colorScale = d3.scaleLinear()
+    var colorScale = d3.scaleOrdinal()
         .domain(colorDomain)
-        .range(["lightblue", "blue"]);
+        .range(["#5E4FA2", "#3288BD", "#66C2A5", "#ABDDA4", "#E6F598",
+            "#FFFFBF", "#FEE08B", "#FDAE61", "#F46D43", "#D53E4F", "#9E0142"]);
+
 
     var svg = d3.select("#mouseMovements")
         .append("svg")
@@ -226,7 +228,7 @@ function heatMap() {
         })
         .attr("width", 40)
         .attr("height", 40).style("fill", function (d) {
-        return colorScale(d.value);
+        return colorScale(d.heatLevel);
     });
 }
 
@@ -245,6 +247,14 @@ require('electron').ipcRenderer.on('mouseMove', (event, message) => {
 
     mousePoints.push(xLocation);
     mousePoints.push(yLocation);
+
+    objIndex = heatMapValues.findIndex((obj => obj.xLocation ==Math.round(xLocation / 40) * 40  && obj.yLocation ==Math.round(xLocation / 40) * yLocation));
+
+    console.log(objIndex);
+
+    if(objIndex >= 0) {
+        heatMapValues[objIndex].heatLevel += 1;
+    }
 
     heatMap();
 });

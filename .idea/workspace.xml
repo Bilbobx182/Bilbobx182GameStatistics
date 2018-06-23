@@ -21,8 +21,8 @@
       <file leaf-file-name="renderer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/renderer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1411">
-              <caret line="247" selection-start-line="247" selection-end-line="247" />
+            <state relative-caret-position="311">
+              <caret line="255" column="47" selection-start-line="255" selection-start-column="47" selection-end-line="255" selection-end-column="47" />
               <folding>
                 <element signature="n#!!block;n#barChart#0" />
                 <element signature="n#!!block;n#pieChart#0" />
@@ -220,12 +220,12 @@
       <workItem from="1529488680045" duration="6582000" />
       <workItem from="1529509617854" duration="3634000" />
       <workItem from="1529685377545" duration="7651000" />
-      <workItem from="1529753739011" duration="3805000" />
+      <workItem from="1529753739011" duration="6190000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76000000" />
+    <option name="totallyTimeSpent" value="78385000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
@@ -240,7 +240,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3275862" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.28879312" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39655173" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -271,21 +271,27 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <breakpoint enabled="true" type="javascript-exception">
-          <properties name="TypeError" />
-          <option name="timeStamp" value="87" />
-        </breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/renderer.js</url>
-          <line>24</line>
+          <line>252</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="116" />
+          <option name="timeStamp" value="135" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -296,7 +302,7 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="117" />
+      <option name="time" value="136" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="NodeJSConfigurationType">
@@ -308,52 +314,47 @@
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>heatMapValues[0][0] = 1</expression-string>
+        <expression-string>Math.round(xLocation / 40) * 40</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>heat</expression-string>
+        <expression-string>Math.round(xLocation/10)</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>heatMapValues[0][0].push(0)</expression-string>
+        <expression-string>xLocation</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>heatMapValues[0]</expression-string>
+        <expression-string>Math.round(xLocation)</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>heatMapValues[0][0]</expression-string>
+        <expression-string>Math.round(xLocation / 40)</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>heatMapValues</expression-string>
+        <expression-string>Math.round(xLocation / 10)</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>x</expression-string>
+        <expression-string>Math.round(xLocation / 10) * 10</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>y</expression-string>
+        <expression-string>Math.round(xLocation / 10) * 40</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>heatMapValues[y][x]</expression-string>
-        <language-id>JavaScript</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Math.floor(convertRange(message.x, [0, screenDimensions.width], [0, screenDimensions.width / 2]))</expression-string>
+        <expression-string>colorScale(d.value)</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -728,8 +729,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/renderer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="247" selection-start-line="247" selection-end-line="247" />
+        <state relative-caret-position="311">
+          <caret line="255" column="47" selection-start-line="255" selection-start-column="47" selection-end-line="255" selection-end-column="47" />
           <folding>
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
