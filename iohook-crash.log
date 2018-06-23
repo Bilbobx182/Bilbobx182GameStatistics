@@ -16005,3 +16005,93 @@ c:\users\ciaranlaptop\webstormprojects\cgs\node_modules\segfault-handler\src\seg
 00007FF6BA777993 (electron): (filename not available): IsSandboxedProcess
 00007FFD981B3034 (KERNEL32): (filename not available): BaseThreadInitThunk
 00007FFD9A681431 (ntdll): (filename not available): RtlUserThreadStart
+PID 14696 received SIGSEGV for address: 0x96d8a388
+SymInit: Symbol-SearchPath: '.;C:\Users\CiaranLaptop\WebstormProjects\CGS;C:\Users\CiaranLaptop\WebstormProjects\CGS\node_modules\electron\dist;C:\WINDOWS;C:\WINDOWS\system32;SRV*C:\websymbols*http://msdl.microsoft.com/download/symbols;', symOptions: 530, UserName: 'CiaranLaptop'
+OS-Version: 10.0.17134 () 0x300-0x1
+c:\users\ciaranlaptop\webstormprojects\cgs\node_modules\segfault-handler\src\stackwalker.cpp (941): StackWalker::ShowCallstack
+c:\users\ciaranlaptop\webstormprojects\cgs\node_modules\segfault-handler\src\segfault-handler.cpp (235): segfault_handler
+00007FFD9A675678 (ntdll): (filename not available): RtlInitializeCriticalSection
+00007FFD9A61692A (ntdll): (filename not available): RtlWalkFrameChain
+00007FFD9A6152CA (ntdll): (filename not available): RtlRaiseException
+00007FFD96D8A388 (KERNELBASE): (filename not available): RaiseException
+00007FFD980BDC3B (RPCRT4): (filename not available): RpcRaiseException
+00007FFD980BDC04 (RPCRT4): (filename not available): RpcRaiseException
+00007FFD980BDBDC (RPCRT4): (filename not available): RpcAsyncGetCallStatus
+00007FFD980BDAAF (RPCRT4): (filename not available): NdrFullPointerQueryPointer
+00007FFD98073B4F (RPCRT4): (filename not available): NdrAsyncClientCall
+00007FFD981504F4 (RPCRT4): (filename not available): Ndr64AsyncClientCall
+00007FFD98072C09 (RPCRT4): (filename not available): RpcAsyncCompleteCall
+00007FFD98072B42 (RPCRT4): (filename not available): RpcAsyncCompleteCall
+00007FFD95AC2A0D (WINSTA): (filename not available): WinStationRegisterConsoleNotification
+00007FFD95AC30CD (WINSTA): (filename not available): WinStationRegisterConsoleNotification
+00007FFD95AC2238 (WINSTA): (filename not available): WinStationRegisterConsoleNotification
+00007FFD980C848F (RPCRT4): (filename not available): RpcStringBindingParseW
+00007FFD980C83F6 (RPCRT4): (filename not available): RpcStringBindingParseW
+00007FFD9808E8F3 (RPCRT4): (filename not available): RpcServerInqCallAttributesW
+00007FFD980773E8 (RPCRT4): (filename not available): I_RpcServerUseProtseqEp2W
+00007FFD9808A2D1 (RPCRT4): (filename not available): RpcServerInqCallAttributesW
+00007FFD98089864 (RPCRT4): (filename not available): RpcServerInqCallAttributesW
+00007FFD980D99CA (RPCRT4): (filename not available): RpcAsyncCancelCall
+00007FFD95AC238D (WINSTA): (filename not available): WinStationRegisterConsoleNotification
+00007FFD95AC2F65 (WINSTA): (filename not available): WinStationRegisterConsoleNotification
+00007FFD95AC1906 (WINSTA): (filename not available): WinStationRegisterCurrentSessionNotificationEvent
+00007FFD95AC1A8D (WINSTA): (filename not available): WinStationUnRegisterConsoleNotification
+00007FFD95AC19C1 (WINSTA): (filename not available): WinStationUnRegisterConsoleNotification
+00007FFD922A2180 (WTSAPI32): (filename not available): WTSUnRegisterSessionNotification
+00007FF6B96A8724 (electron): (filename not available): IsSandboxedProcess
+00007FF6B96A83E2 (electron): (filename not available): IsSandboxedProcess
+00007FF6B96A861A (electron): (filename not available): IsSandboxedProcess
+00007FF6B7E73076 (electron): (filename not available): (function-name not available)
+00007FF6B7E72D81 (electron): (filename not available): (function-name not available)
+00007FF6B940C3F2 (electron): (filename not available): IsSandboxedProcess
+00007FF6BA1833A6 (electron): (filename not available): IsSandboxedProcess
+00007FF6B8F6D0E0 (electron): (filename not available): GetHandleVerifier
+00007FF6B7C8BC85 (electron): (filename not available): (function-name not available)
+00007FF6BA777993 (electron): (filename not available): IsSandboxedProcess
+00007FFD981B3034 (KERNEL32): (filename not available): BaseThreadInitThunk
+00007FFD9A681431 (ntdll): (filename not available): RtlUserThreadStart
+PID 1772 received SIGSEGV for address: 0x96d8a388
+SymInit: Symbol-SearchPath: '.;C:\Users\CiaranLaptop\WebstormProjects\CGS;C:\Users\CiaranLaptop\WebstormProjects\CGS\node_modules\electron\dist;C:\WINDOWS;C:\WINDOWS\system32;SRV*C:\websymbols*http://msdl.microsoft.com/download/symbols;', symOptions: 530, UserName: 'CiaranLaptop'
+OS-Version: 10.0.17134 () 0x300-0x1
+c:\users\ciaranlaptop\webstormprojects\cgs\node_modules\segfault-handler\src\stackwalker.cpp (941): StackWalker::ShowCallstack
+c:\users\ciaranlaptop\webstormprojects\cgs\node_modules\segfault-handler\src\segfault-handler.cpp (235): segfault_handler
+00007FFD9A675678 (ntdll): (filename not available): RtlInitializeCriticalSection
+00007FFD9A61692A (ntdll): (filename not available): RtlWalkFrameChain
+00007FFD9A6152CA (ntdll): (filename not available): RtlRaiseException
+00007FFD96D8A388 (KERNELBASE): (filename not available): RaiseException
+00007FFD980BDC3B (RPCRT4): (filename not available): RpcRaiseException
+00007FFD980BDC04 (RPCRT4): (filename not available): RpcRaiseException
+00007FFD980BDBDC (RPCRT4): (filename not available): RpcAsyncGetCallStatus
+00007FFD980BDAAF (RPCRT4): (filename not available): NdrFullPointerQueryPointer
+00007FFD98073B4F (RPCRT4): (filename not available): NdrAsyncClientCall
+00007FFD981504F4 (RPCRT4): (filename not available): Ndr64AsyncClientCall
+00007FFD98072C09 (RPCRT4): (filename not available): RpcAsyncCompleteCall
+00007FFD98072B42 (RPCRT4): (filename not available): RpcAsyncCompleteCall
+00007FFD95AC2A0D (WINSTA): (filename not available): WinStationRegisterConsoleNotification
+00007FFD95AC30CD (WINSTA): (filename not available): WinStationRegisterConsoleNotification
+00007FFD95AC2238 (WINSTA): (filename not available): WinStationRegisterConsoleNotification
+00007FFD980C848F (RPCRT4): (filename not available): RpcStringBindingParseW
+00007FFD980C83F6 (RPCRT4): (filename not available): RpcStringBindingParseW
+00007FFD9808E8F3 (RPCRT4): (filename not available): RpcServerInqCallAttributesW
+00007FFD980773E8 (RPCRT4): (filename not available): I_RpcServerUseProtseqEp2W
+00007FFD9808A2D1 (RPCRT4): (filename not available): RpcServerInqCallAttributesW
+00007FFD98089864 (RPCRT4): (filename not available): RpcServerInqCallAttributesW
+00007FFD980D99CA (RPCRT4): (filename not available): RpcAsyncCancelCall
+00007FFD95AC238D (WINSTA): (filename not available): WinStationRegisterConsoleNotification
+00007FFD95AC2F65 (WINSTA): (filename not available): WinStationRegisterConsoleNotification
+00007FFD95AC1906 (WINSTA): (filename not available): WinStationRegisterCurrentSessionNotificationEvent
+00007FFD95AC1A8D (WINSTA): (filename not available): WinStationUnRegisterConsoleNotification
+00007FFD95AC19C1 (WINSTA): (filename not available): WinStationUnRegisterConsoleNotification
+00007FFD922A2180 (WTSAPI32): (filename not available): WTSUnRegisterSessionNotification
+00007FF6B96A8724 (electron): (filename not available): IsSandboxedProcess
+00007FF6B96A83E2 (electron): (filename not available): IsSandboxedProcess
+00007FF6B96A861A (electron): (filename not available): IsSandboxedProcess
+00007FF6B7E73076 (electron): (filename not available): (function-name not available)
+00007FF6B7E72D81 (electron): (filename not available): (function-name not available)
+00007FF6B940C3F2 (electron): (filename not available): IsSandboxedProcess
+00007FF6BA1833A6 (electron): (filename not available): IsSandboxedProcess
+00007FF6B8F6D0E0 (electron): (filename not available): GetHandleVerifier
+00007FF6B7C8BC85 (electron): (filename not available): (function-name not available)
+00007FF6BA777993 (electron): (filename not available): IsSandboxedProcess
+00007FFD981B3034 (KERNEL32): (filename not available): BaseThreadInitThunk
+00007FFD9A681431 (ntdll): (filename not available): RtlUserThreadStart

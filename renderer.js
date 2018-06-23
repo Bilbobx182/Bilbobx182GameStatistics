@@ -251,24 +251,32 @@ function convertRange(value, r1, r2) {
 }
 
 require('electron').ipcRenderer.on('mouseMove', (event, message) => {
+
+    let isArtsy = false;
+    let isHeatMap = true;
+
     let xLocation = Math.floor(convertRange(message.x, [0, screenDimensions.width], [0, screenDimensions.width / 2]));
     let yLocation = Math.floor(convertRange(message.y, [0, screenDimensions.height], [0, screenDimensions.height / 2]));
 
     mousePoints.push(xLocation);
     mousePoints.push(yLocation);
 
-    let xRounded = Math.round(xLocation / arbitraryHeatPixelationLevel) * arbitraryHeatPixelationLevel;
-    let yRounded = Math.round(yLocation / arbitraryHeatPixelationLevel) * arbitraryHeatPixelationLevel;
+    if(isArtsy) {
+        artsyMouseMovements(event);
+    }
+    if(isHeatMap) {
+        let xRounded = Math.round(xLocation / arbitraryHeatPixelationLevel) * arbitraryHeatPixelationLevel;
+        let yRounded = Math.round(yLocation / arbitraryHeatPixelationLevel) * arbitraryHeatPixelationLevel;
 
-    objIndex = heatMapValues.findIndex((obj => obj.xLocation == xRounded && obj.yLocation == yRounded));
+        objIndex = heatMapValues.findIndex((obj => obj.xLocation == xRounded && obj.yLocation == yRounded));
 
-    console.log(objIndex);
+        if(objIndex >= 0) {
+            heatMapValues[objIndex].heatLevel += 1;
+        }
 
-    if(objIndex >= 0) {
-        heatMapValues[objIndex].heatLevel += 1;
+        heatMap();
     }
 
-    heatMap();
 });
 
 function artsyMouseMovements(event) {
@@ -278,7 +286,7 @@ function artsyMouseMovements(event) {
 
     var svg = d3.select("#mouseMovements").append("svg")
         .attr("width", screenDimensions.width / 2)
-        .attr("height", screenDimensions.height / 2 - 50);
+        .attr("height", screenDimensions.height / 2);
 
     svg.append('rect')
         .attr("x", 1)
