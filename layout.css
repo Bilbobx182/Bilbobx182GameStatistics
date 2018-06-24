@@ -14,10 +14,6 @@
 button {
     fill: #2c2f33;
 }
-
-.mainFlexUpper {
-    margin-left: auto;
-}
 .axisColour line {
     stroke: aliceblue;
 }
@@ -51,8 +47,10 @@ button {
     height: 55%;
     width: 100%;
     justify-content: space-around;
+    border-bottom-color: #23272a;
     border-bottom-style: solid;
 }
+
 
 .mainFlexLower {
     display: flex;
@@ -61,15 +59,6 @@ button {
     width: 100%;
     justify-content: space-around;
 }
-
-#greyHighligjht {
-    background-color: #212428;
-}
-
-#blueHighlight {
-    background-color: #323439;
-}
-
 .barChart {
     font: 10px sans-serif;
     background-color: steelblue;
@@ -78,6 +67,32 @@ button {
     margin: 1px;
     color: aliceblue;
 }
+
+#heatMap {
+    display: block;
+    margin: auto;
+}
+
+#nav-container {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mouseMovements {
+    padding-bottom: 5px;
+    border-left-color: aliceblue;
+    border-bottom-style: solid;
+}
+
+#nav-container .left {
+    margin-right: 20px;
+}
+
+#nav-container .right {
+    margin-left: 20px;
+}
+
 
 .pie {
     margin: 20px;
@@ -94,27 +109,4 @@ button {
 
 .pie .value-text {
     font-size: 3em;
-}
-
-#heatMap {
-    display: block;
-    margin: auto;
-}
-
-#nav-container {
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.mouseMovements {
-    padding-bottom: 5px;
-}
-
-#nav-container .left {
-    margin-right: 20px;
-}
-
-#nav-container .right {
-    margin-left: 20px;
 }

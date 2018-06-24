@@ -207,6 +207,7 @@ function heatMap() {
     var colorScale = d3.scaleLinear()
         .domain(colorDomain)
         .range([
+            "#272a2d",
             "#052899",
             //      "#043E9A",
             //     "#04559C",
@@ -237,6 +238,7 @@ function heatMap() {
 
     var svg = d3.select("#mouseMovements")
         .append("svg")
+        .attr("x",5)
         .attr("width", screenDimensions.width / 2)
         .attr("height", (screenDimensions.height / 2));
 
@@ -302,46 +304,6 @@ function mouseMovements(event) {
             .style("stroke", "aliceblue")
             .attr("points", mousePoints)
             .attr("fill", d3.rgb('#323439'));
-}
-
-createButton();
-
-function createButton(buttonSettings) {
-    // var svg = d3.select("#menu")
-    //     .append("svg")
-    //     .attr("width", Math.round(300))
-    //     .attr("height", Math.round(600));
-    //
-    // for (let count = 0; count < 3; count++) {
-    //     svg.append('rect')
-    //         .attr("x", 10)
-    //         .attr("rx", 10)
-    //         .attr("ry", 10)
-    //         .attr("y", 10 + count * 50)
-    //         .attr("width", Math.round(screenDimensions.width * .1))
-    //         .attr("height", Math.round(screenDimensions.height * .03))
-    //         .attr("fill", d3.rgb('#99aab5'));
-    //
-    // }
-    // I really like the idea of a switch, but I dont think design wise it's viable right now
-    // svg.append('circle')
-    //     .attr("cx", 20)
-    //     .attr("cy", 20)
-    //     .attr("r", Math.round(screenDimensions.width * .01))
-    //     .attr("id", "heatMapCircle")
-    //     .attr("fill", d3.rgb('#99aab5'))
-    //     .attr("border-radius",5)
-    //     .on("click", function (d) {
-    //         d3.select("heatMapCircle").transition()           // apply a transition
-    //             .duration(500)         // apply it over 4000 milliseconds
-    //             .attr('cx', 80);
-    //
-    //         d3.select("rect")
-    //             .attr("fill", 'lime');
-    //         //         .duration(5000)
-    //         //         .attrs({x: 460, y: 150, width: 40, height: 40, fill: 'blue'})
-    //     });
-
 }
 
 require('electron').ipcRenderer.on('mouseMove', (event, message) => {

@@ -13,7 +13,7 @@ global.keyCodeToAlphabet = {};
 
 function createWindow() {
     mainWindow = new BrowserWindow({width: 1920, height: 1080})
-    //mainWindow.setMenu(null);
+    mainWindow.setMenu(null);
     mainWindow.maximize();
     setKeys();
 
