@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1e8ec07d-2fb8-4dd9-8b5e-dc6820ca0cf3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.tav" beforeDir="false" afterPath="$PROJECT_DIR$/data.tav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iohook-crash.log" beforeDir="false" afterPath="$PROJECT_DIR$/iohook-crash.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/numMatrix.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/renderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/renderer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -26,37 +24,15 @@
       <file leaf-file-name="renderer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/renderer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1204">
-              <caret line="211" column="195" selection-start-line="211" selection-start-column="195" selection-end-line="211" selection-end-column="195" />
+            <state relative-caret-position="34">
+              <caret line="309" selection-start-line="309" selection-end-line="324" selection-end-column="8" />
               <folding>
                 <element signature="n#!!block;n#init#0" />
                 <element signature="n#!!block;n#convertRange#0" />
                 <element signature="n#!!block;n#barChart#0" />
                 <element signature="n#!!block;n#pieChart#0" />
+                <element signature="n#!!block;n#heatMap#0" />
                 <element signature="n#!!block;n#artsyMouseMovements#0" />
-                <element signature="n#!!block;n#mouseMovements#0" />
-                <element signature="e#9510#9559#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data.tav" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data.tav">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="9" selection-end-line="24" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="60" column="56" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
-              <folding>
-                <element signature="n#!!block;n#transformKeyEvent#0" />
               </folding>
             </state>
           </provider>
@@ -65,17 +41,17 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+            <state relative-caret-position="187">
+              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="layout.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/layout.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+            <state relative-caret-position="238">
+              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -102,6 +78,7 @@
       <find>axis</find>
       <find>scale</find>
       <find>rect</find>
+      <find>#</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,11 +91,11 @@
         <option value="$PROJECT_DIR$/data.tsv" />
         <option value="$PROJECT_DIR$/test.json" />
         <option value="$PROJECT_DIR$/numMatrix.csv" />
-        <option value="$PROJECT_DIR$/layout.css" />
         <option value="$PROJECT_DIR$/data.tav" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/renderer.js" />
         <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/renderer.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/layout.css" />
       </list>
     </option>
   </component>
@@ -154,6 +131,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -165,7 +143,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -250,12 +227,13 @@
       <workItem from="1529509617854" duration="3634000" />
       <workItem from="1529685377545" duration="7651000" />
       <workItem from="1529753739011" duration="10723000" />
-      <workItem from="1529780086621" duration="2639000" />
+      <workItem from="1529780086621" duration="4357000" />
+      <workItem from="1529834895980" duration="2418000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85557000" />
+    <option name="totallyTimeSpent" value="89693000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
@@ -264,11 +242,10 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297414" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3297414" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3275862" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.1961207" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39655173" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -277,24 +254,25 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3297414" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2963362" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3286638" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -316,6 +294,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/renderer.js</url>
+          <line>31</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="140" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -324,7 +310,7 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="140" />
+      <option name="time" value="142" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="NodeJSConfigurationType">
@@ -341,22 +327,22 @@
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string />
+        <expression-string>Math.floor(convertRange(d.heatLevel, [0, highest], [0, 25]))</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>colorScale(Math.floor(convertRange(d.heatLevel, [0, highest], [0, 25])))</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>colorScale(Math.floor(convertRange(d.heatLevel, [0, highest], [0, 25]))</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>Math.round(xLocation / 40) * 40</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -376,17 +362,17 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>Math.round(xLocation / 40)</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>Math.round(xLocation / 10)</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>Math.round(xLocation / 10) * 10</expression-string>
         <language-id>JavaScript</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -409,9 +395,8 @@
             <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#heatMap#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
-            <element signature="n#!!block;n#mouseMovements#0" />
-            <element signature="e#9510#9559#0" />
           </folding>
         </state>
       </provider>
@@ -453,9 +438,8 @@
             <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#heatMap#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
-            <element signature="n#!!block;n#mouseMovements#0" />
-            <element signature="e#9510#9559#0" />
           </folding>
         </state>
       </provider>
@@ -497,9 +481,8 @@
             <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#heatMap#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
-            <element signature="n#!!block;n#mouseMovements#0" />
-            <element signature="e#9510#9559#0" />
           </folding>
         </state>
       </provider>
@@ -565,9 +548,8 @@
             <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#heatMap#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
-            <element signature="n#!!block;n#mouseMovements#0" />
-            <element signature="e#9510#9559#0" />
           </folding>
         </state>
       </provider>
@@ -609,9 +591,8 @@
             <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#heatMap#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
-            <element signature="n#!!block;n#mouseMovements#0" />
-            <element signature="e#9510#9559#0" />
           </folding>
         </state>
       </provider>
@@ -639,9 +620,8 @@
             <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#heatMap#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
-            <element signature="n#!!block;n#mouseMovements#0" />
-            <element signature="e#9510#9559#0" />
           </folding>
         </state>
       </provider>
@@ -729,13 +709,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/numMatrix.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/numMatrix.csv" />
     <entry file="file://$PROJECT_DIR$/node_modules/d3/dist/d3.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -743,50 +717,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layout.css">
+    <entry file="file://$PROJECT_DIR$/data.tav" />
+    <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data.tav">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="9" selection-end-line="24" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        <state relative-caret-position="935">
+          <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/renderer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1204">
-          <caret line="211" column="195" selection-start-line="211" selection-start-column="195" selection-end-line="211" selection-end-column="195" />
+        <state relative-caret-position="34">
+          <caret line="309" selection-start-line="309" selection-end-line="324" selection-end-column="8" />
           <folding>
             <element signature="n#!!block;n#init#0" />
             <element signature="n#!!block;n#convertRange#0" />
             <element signature="n#!!block;n#barChart#0" />
             <element signature="n#!!block;n#pieChart#0" />
+            <element signature="n#!!block;n#heatMap#0" />
             <element signature="n#!!block;n#artsyMouseMovements#0" />
-            <element signature="n#!!block;n#mouseMovements#0" />
-            <element signature="e#9510#9559#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="60" column="56" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
-          <folding>
-            <element signature="n#!!block;n#transformKeyEvent#0" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layout.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
         </state>
       </provider>
     </entry>

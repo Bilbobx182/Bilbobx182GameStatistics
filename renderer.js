@@ -38,22 +38,17 @@ function barChart(keyPressdata) {
     var clearBar = document.getElementById('barChart');
     clearBar.innerHTML = "";
 
-
     var color = d3.scaleOrdinal(d3.schemeCategory10);
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
         width = 960 - margin.left - margin.right,
         height = screenDimensions.height * .42 - margin.top - margin.bottom;
 
-// set the ranges
     var x = d3.scaleBand()
         .range([0, width])
         .padding(0.1);
     var y = d3.scaleLinear()
         .range([height, 0]);
 
-// append the svg object to the body of the page
-// append a 'group' element to 'svg'
-// moves the 'group' element to the top left margin
     var svg = d3.select("#barChart").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -192,7 +187,6 @@ function pieChart(keyPressData) {
             this._current = i;
         });
 
-
     g.append('text')
         .attr('text-anchor', 'middle')
         .attr('dy', '.35em')
@@ -200,16 +194,12 @@ function pieChart(keyPressData) {
 }
 
 function heatMap() {
-
-
     var test = document.getElementById('mouseMovements');
     test.innerHTML = "";
 
-
-
-    var highest = Math.max.apply(Math,heatMapValues.map(function(o){return o.heatLevel;}))
-
-    /* I think because we have it as 28 across each representing an area of 40px all the little occurences within that area count ie the cost of going from 1 square to another is multiplied by 40  */
+    var highest = Math.max.apply(Math, heatMapValues.map(function (o) {
+        return o.heatLevel;
+    }))
 
     var colorDomain = d3.extent(heatMapValues, function (d) {
         return Math.floor(convertRange(d.heatLevel, [0, highest], [0, 25]));
@@ -218,29 +208,29 @@ function heatMap() {
         .domain(colorDomain)
         .range([
             "#052899",
-            "#043E9A",
-            "#04559C",
-            "#046D9D",
+            //      "#043E9A",
+            //     "#04559C",
+            //      "#046D9D",
             "#04859F",
-            "#049DA0",
-            "#03A28D",
-            "#03A376",
+            //      "#049DA0",
+            // "#03A28D",
+            //     "#03A376",
             "#03A55F",
-            "#03A648",
-            "#03A830",
-            "#03A917",
+            //     "#03A648",
+            // "#03A830",
+            //     "#03A917",
             "#07AB02",
-            "#20AC02",
-            "#39AE02",
-            "#54AF02",
+            //     "#20AC02",
+            // "#39AE02",
+            //     "#54AF02",
             "#6EB101",
-            "#8AB201",
-            "#A5B401",
-            "#B5A901",
+            //     "#8AB201",
+            //"#A5B401",
+            //     "#B5A901",
             "#B78F00",
-            "#B87400",
-            "#BA5A00",
-            "#BB3E00",
+            //    "#B87400",
+            // "#BA5A00",
+            //    "#BB3E00",
             "#BD2200",
         ]);
 
@@ -316,24 +306,42 @@ function mouseMovements(event) {
 
 createButton();
 
-function createButton() {
-    var svg = d3.select("#menu")
-        .append("svg")
-        .attr("width", Math.round(300))
-        .attr("height", Math.round(600));
+function createButton(buttonSettings) {
+    // var svg = d3.select("#menu")
+    //     .append("svg")
+    //     .attr("width", Math.round(300))
+    //     .attr("height", Math.round(600));
+    //
+    // for (let count = 0; count < 3; count++) {
+    //     svg.append('rect')
+    //         .attr("x", 10)
+    //         .attr("rx", 10)
+    //         .attr("ry", 10)
+    //         .attr("y", 10 + count * 50)
+    //         .attr("width", Math.round(screenDimensions.width * .1))
+    //         .attr("height", Math.round(screenDimensions.height * .03))
+    //         .attr("fill", d3.rgb('#99aab5'));
+    //
+    // }
+    // I really like the idea of a switch, but I dont think design wise it's viable right now
+    // svg.append('circle')
+    //     .attr("cx", 20)
+    //     .attr("cy", 20)
+    //     .attr("r", Math.round(screenDimensions.width * .01))
+    //     .attr("id", "heatMapCircle")
+    //     .attr("fill", d3.rgb('#99aab5'))
+    //     .attr("border-radius",5)
+    //     .on("click", function (d) {
+    //         d3.select("heatMapCircle").transition()           // apply a transition
+    //             .duration(500)         // apply it over 4000 milliseconds
+    //             .attr('cx', 80);
+    //
+    //         d3.select("rect")
+    //             .attr("fill", 'lime');
+    //         //         .duration(5000)
+    //         //         .attrs({x: 460, y: 150, width: 40, height: 40, fill: 'blue'})
+    //     });
 
-
-    svg.append('rect')
-        .attr("x", 10)
-        .attr("y", 10)
-        .attr("width", Math.round(screenDimensions.width * .04))
-        .attr("height", Math.round(screenDimensions.height * .02))
-        .attr("fill", 'red');
-
-
-    //  .transition()
-    //         .duration(5000)
-    //         .attrs({x: 460, y: 150, width: 40, height: 40, fill: 'blue'})
 }
 
 require('electron').ipcRenderer.on('mouseMove', (event, message) => {
